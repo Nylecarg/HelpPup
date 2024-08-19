@@ -11,7 +11,6 @@ struct SettingsView: View {
         NavigationStack{
             VStack {
                 Text("Hello, world!")
-                Text("EEEE")
             }
             .navigationTitle("Settings")
             .navigationBarTitleDisplayMode(.large)
