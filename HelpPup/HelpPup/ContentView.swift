@@ -25,31 +25,41 @@ enum buttons: Codable, Hashable, CaseIterable {
 }
 struct ContentView: View {
     var body: some View {
-        NavigationStack{
-            VStack {
-                HStack {
-                    navigationTile(name: .reminders)
-                        .background(Color.blue)
-                        .clipShape(RoundedRectangle(cornerRadius: 25))
-                    navigationTile(name: .moodScore)
-                        .background(Color.gray)
-                        .clipShape(RoundedRectangle(cornerRadius: 25))
+        GeometryReader { geometry in
+            NavigationStack{
+                ZStack{
+                    Image("bg")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .position(x: geometry.size.width / 2, y: 426)
+                        .ignoresSafeArea()
+                    VStack {
+                        Text("hello")
+                        HStack {
+                            navigationTile(name: .reminders)
+                                .background(Color.blue)
+                                .clipShape(RoundedRectangle(cornerRadius: 25))
+                            navigationTile(name: .moodScore)
+                                .background(Color.gray)
+                                .clipShape(RoundedRectangle(cornerRadius: 25))
+                        }
+                        HStack {
+                            navigationTile(name: .selfCare)
+                                .background(Color.red)
+                                .clipShape(RoundedRectangle(cornerRadius: 25))
+                            navigationTile(name: .journal)
+                                .background(Color.purple)
+                                .clipShape(RoundedRectangle(cornerRadius: 25))
+                        }
+                        Spacer()
+                            .frame(height: 400)
+                    } .padding()
+                        .navigationTitle("Home")
+                        .navigationBarTitleDisplayMode(.large)
+                        .toolbar {
+                            NavigationLink(destination: SettingsView()) {     Image(systemName: "gear") }
+                        }
                 }
-                HStack {
-                    navigationTile(name: .selfCare)
-                        .background(Color.red)
-                        .clipShape(RoundedRectangle(cornerRadius: 25))
-                    navigationTile(name: .journal)
-                        .background(Color.purple)
-                        .clipShape(RoundedRectangle(cornerRadius: 25))
-                }
-            } .padding()
-            Spacer()
-                .frame(height: 400)
-            .navigationTitle("Home")
-            .navigationBarTitleDisplayMode(.large)
-            .toolbar {
-                NavigationLink(destination: SettingsView()) {     Image(systemName: "gear") }
             }
         }
     }
@@ -59,9 +69,8 @@ struct ContentView: View {
                 Text("\(name.string)")
                     .minimumScaleFactor(0.1)
                     .font(.system(size: 23))
+                    .frame(width: 115, height: 50)
                     .bold()
-                    .frame(maxWidth: .infinity)
-                    .frame(maxHeight: .infinity)
             }
             .padding(30)
             .foregroundStyle(.white)
