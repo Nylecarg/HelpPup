@@ -8,12 +8,21 @@
 import SwiftUI
 struct SettingsView: View {
     var body: some View {
-        NavigationStack{
-            VStack {
-                Text("Hello, world!")
+        GeometryReader { geometry in
+            NavigationStack{
+                ZStack{
+                    Image("setbg")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .position(x: geometry.size.width / 2, y: 426)
+                        .ignoresSafeArea()
+                    VStack {
+                        Text("Hello, world!")
+                    }
+                    .navigationTitle("Settings")
+                    .navigationBarTitleDisplayMode(.large)
+                }
             }
-            .navigationTitle("Settings")
-            .navigationBarTitleDisplayMode(.large)
         }
     }
 }
