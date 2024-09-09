@@ -23,61 +23,95 @@ enum buttons: Codable, Hashable, CaseIterable {
         }
     }
 }
+
 struct ContentView: View {
+    @State private var showMoodInput = false
+    @ObservedObject var moodTracker: MoodTracker = .shared
+    
     var body: some View {
         GeometryReader { geometry in
-            NavigationStack{
-                ZStack{
+            NavigationStack {
+                ZStack {
                     Image("bg")
                         .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .position(x: geometry.size.width / 2, y: 426)
                         .ignoresSafeArea()
+                        .offset(x: 0.1)
+                    
                     VStack {
-                        Text("hello")
+                        Text("Wise words")
+                            .font(.custom("DIN Alternate", size: 25))
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        
+                        if showMoodInput {
+                            MoodInputBox(isPresented: $showMoodInput) { moodScore in
+                                moodTracker.addMoodEntry(moodScore: moodScore)
+                            }
+                            .transition(.move(edge: .top))
+                        }
+                        
                         HStack {
                             navigationTile(name: .reminders)
-                                .background(Color.blue)
-                                .clipShape(RoundedRectangle(cornerRadius: 25))
+                                .background(Color.white)
+                                .clipShape(RoundedRectangle(cornerRadius: 20))
                             navigationTile(name: .moodScore)
                                 .background(Color.gray)
-                                .clipShape(RoundedRectangle(cornerRadius: 25))
+                                .clipShape(RoundedRectangle(cornerRadius: 20))
                         }
+                        
                         HStack {
                             navigationTile(name: .selfCare)
-                                .background(Color.red)
-                                .clipShape(RoundedRectangle(cornerRadius: 25))
+                                .background(Color.yellow)
+                                .clipShape(RoundedRectangle(cornerRadius: 20))
                             navigationTile(name: .journal)
-                                .background(Color.purple)
-                                .clipShape(RoundedRectangle(cornerRadius: 25))
+                                .background(Color.blue)
+                                .clipShape(RoundedRectangle(cornerRadius: 20))
                         }
                         Spacer()
-                            .frame(height: 400)
-                    } .padding()
-                        .navigationTitle("Home")
-                        .navigationBarTitleDisplayMode(.large)
-                        .toolbar {
-                            NavigationLink(destination: SettingsView()) {     Image(systemName: "gear") }
+                    }
+                    .padding()
+                    .navigationTitle("Home")
+                    .navigationBarTitleDisplayMode(.large)
+                    .toolbar {
+                        NavigationLink(destination: SettingsView()) {
+                            Image(systemName: "gear")
+                                .foregroundStyle(.white)
                         }
+                    }
+                    .navigationDestination(for: buttons.self) { destination in
+                        switch destination {
+                        case .reminders:
+                            RemindersView()
+                        case .moodScore:
+                            MoodScoreView()
+                        case .selfCare:
+                            SelfCareView()
+                        case .journal:
+                            JournalView()
+                        }
+                    }
                 }
             }
         }
+        .onAppear {
+            showMoodInput = true
+        }
     }
+    
     func navigationTile(name: buttons) -> some View {
         NavigationLink(value: name) {
             HStack {
-                Text("\(name.string)")
-                    .minimumScaleFactor(0.1)
-                    .font(.system(size: 23))
-                    .frame(width: 115, height: 50)
-                    .bold()
+                Image("\(name.string)")
+                    .resizable()
+                    .scaledToFill()
             }
-            .padding(30)
             .foregroundStyle(.white)
         }
         .buttonStyle(.plain)
+        .frame(maxWidth: .infinity)
+        .frame(height: 95)
     }
 }
+
 #Preview {
     ContentView()
 }

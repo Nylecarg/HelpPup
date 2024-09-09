@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D66B8442C7EFB5100A964F0 /* MoodScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D66B8432C7EFB5100A964F0 /* MoodScoreView.swift */; };
+		1D66B8462C7EFB5C00A964F0 /* RemindersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D66B8452C7EFB5C00A964F0 /* RemindersView.swift */; };
+		1D66B8482C7EFB6B00A964F0 /* SelfCareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D66B8472C7EFB6B00A964F0 /* SelfCareView.swift */; };
+		1D66B84A2C7EFB7A00A964F0 /* JournalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D66B8492C7EFB7A00A964F0 /* JournalView.swift */; };
+		1D66B84C2C7EFD2000A964F0 /* MoodTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D66B84B2C7EFD2000A964F0 /* MoodTracker.swift */; };
+		1D66B84E2C7EFD8200A964F0 /* MoodInputBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D66B84D2C7EFD8200A964F0 /* MoodInputBox.swift */; };
 		1DBBCDFB2C44E8CB00BCF40C /* HelpPupApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBBCDFA2C44E8CB00BCF40C /* HelpPupApp.swift */; };
 		1DBBCDFD2C44E8CB00BCF40C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBBCDFC2C44E8CB00BCF40C /* ContentView.swift */; };
 		1DBBCDFF2C44E8CF00BCF40C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1DBBCDFE2C44E8CF00BCF40C /* Assets.xcassets */; };
@@ -15,6 +21,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1D66B8432C7EFB5100A964F0 /* MoodScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodScoreView.swift; sourceTree = "<group>"; };
+		1D66B8452C7EFB5C00A964F0 /* RemindersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersView.swift; sourceTree = "<group>"; };
+		1D66B8472C7EFB6B00A964F0 /* SelfCareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfCareView.swift; sourceTree = "<group>"; };
+		1D66B8492C7EFB7A00A964F0 /* JournalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalView.swift; sourceTree = "<group>"; };
+		1D66B84B2C7EFD2000A964F0 /* MoodTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodTracker.swift; sourceTree = "<group>"; };
+		1D66B84D2C7EFD8200A964F0 /* MoodInputBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodInputBox.swift; sourceTree = "<group>"; };
 		1DBBCDF72C44E8CB00BCF40C /* HelpPup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelpPup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DBBCDFA2C44E8CB00BCF40C /* HelpPupApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpPupApp.swift; sourceTree = "<group>"; };
 		1DBBCDFC2C44E8CB00BCF40C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -55,6 +67,12 @@
 			children = (
 				1DBBCDFA2C44E8CB00BCF40C /* HelpPupApp.swift */,
 				1DBBCDFC2C44E8CB00BCF40C /* ContentView.swift */,
+				1D66B8492C7EFB7A00A964F0 /* JournalView.swift */,
+				1D66B8472C7EFB6B00A964F0 /* SelfCareView.swift */,
+				1D66B8452C7EFB5C00A964F0 /* RemindersView.swift */,
+				1D66B8432C7EFB5100A964F0 /* MoodScoreView.swift */,
+				1D66B84B2C7EFD2000A964F0 /* MoodTracker.swift */,
+				1D66B84D2C7EFD8200A964F0 /* MoodInputBox.swift */,
 				1DBBCE082C44E8FE00BCF40C /* SettingsView.swift */,
 				1DBBCDFE2C44E8CF00BCF40C /* Assets.xcassets */,
 				1DBBCE002C44E8CF00BCF40C /* Preview Content */,
@@ -140,9 +158,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D66B8442C7EFB5100A964F0 /* MoodScoreView.swift in Sources */,
+				1D66B8482C7EFB6B00A964F0 /* SelfCareView.swift in Sources */,
 				1DBBCE092C44E8FE00BCF40C /* SettingsView.swift in Sources */,
+				1D66B8462C7EFB5C00A964F0 /* RemindersView.swift in Sources */,
+				1D66B84A2C7EFB7A00A964F0 /* JournalView.swift in Sources */,
 				1DBBCDFD2C44E8CB00BCF40C /* ContentView.swift in Sources */,
 				1DBBCDFB2C44E8CB00BCF40C /* HelpPupApp.swift in Sources */,
+				1D66B84E2C7EFD8200A964F0 /* MoodInputBox.swift in Sources */,
+				1D66B84C2C7EFD2000A964F0 /* MoodTracker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

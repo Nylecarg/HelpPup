@@ -13,9 +13,8 @@ struct SettingsView: View {
                 ZStack{
                     Image("setbg")
                         .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .position(x: geometry.size.width / 2, y: 426)
                         .ignoresSafeArea()
+                        .offset(x: 0.4)
                     VStack {
                         Text("Hello, world!")
                     }
