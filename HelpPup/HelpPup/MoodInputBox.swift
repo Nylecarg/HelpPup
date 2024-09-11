@@ -15,26 +15,33 @@ struct MoodInputBox: View {
     
     var body: some View {
         VStack {
-            Text("Rate your mood")
-                .font(.headline)
+            Text("Current mood")
+                .foregroundStyle(.black)
+                .font(.title2)
+                .bold()
                 .padding(.bottom, 10)
             
+            Text("☹️       😐       🙂       😃")
+                .font(.largeTitle)
+                .padding(.bottom, -15)
+            
             Slider(value: $selectedMood, in: 1.0...10.0, step: 1.0)
-                .padding()
+                .accentColor(.yellow)
+                .padding(5)
             
             Button(action: {
                 saveMood(Int(selectedMood))
                 isPresented = false
             }) {
                 Text("Save Mood")
-                    .padding()
-                    .background(Color.blue)
-                    .foregroundColor(.white)
+                    .padding(10)
+                    .background(Color.yellow)
+                    .foregroundStyle(.black)
                     .cornerRadius(10)
             }
         }
         .padding()
-        .background(Color.white)
+        .background(Color.teal.opacity(0.7))
         .cornerRadius(20)
         .shadow(radius: 10)
     }

@@ -6,9 +6,20 @@
 //
 
 import SwiftUI
+import UserNotifications
 
 @main
 struct HelpPupApp: App {
+    let center = UNUserNotificationCenter.current()
+    
+    init() {
+        center.requestAuthorization(options: [.sound, .alert, .badge]) { (granted, error) in
+            if let error = error {
+                print("Notification permission error: \(error.localizedDescription)")
+            }
+        }
+    }
+
     var body: some Scene {
         WindowGroup {
             ContentView()

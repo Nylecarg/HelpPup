@@ -28,6 +28,8 @@ struct ContentView: View {
     @State private var showMoodInput = false
     @ObservedObject var moodTracker: MoodTracker = .shared
     
+    
+    
     var body: some View {
         GeometryReader { geometry in
             NavigationStack {
@@ -38,10 +40,10 @@ struct ContentView: View {
                         .offset(x: 0.1)
                     
                     VStack {
-                        Text("Wise words")
-                            .font(.custom("DIN Alternate", size: 25))
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        
+//                        Text("Wise words")
+//                            .font(.custom("DIN Alternate", size: 25))
+//                            .frame(maxWidth: .infinity, alignment: .leading)
+//                        
                         if showMoodInput {
                             MoodInputBox(isPresented: $showMoodInput) { moodScore in
                                 moodTracker.addMoodEntry(moodScore: moodScore)
@@ -115,3 +117,4 @@ struct ContentView: View {
 #Preview {
     ContentView()
 }
+
