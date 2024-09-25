@@ -28,8 +28,6 @@ struct ContentView: View {
     @State private var showMoodInput = false
     @ObservedObject var moodTracker: MoodTracker = .shared
     
-    
-    
     var body: some View {
         GeometryReader { geometry in
             NavigationStack {
@@ -40,13 +38,9 @@ struct ContentView: View {
                         .offset(x: 0.1)
                     
                     VStack {
-//                        Text("Wise words")
-//                            .font(.custom("DIN Alternate", size: 25))
-//                            .frame(maxWidth: .infinity, alignment: .leading)
-//                        
                         if showMoodInput {
-                            MoodInputBox(isPresented: $showMoodInput) { moodScore in
-                                moodTracker.addMoodEntry(moodScore: moodScore)
+                            MoodInputBox(isPresented: $showMoodInput) { happiness, sadness, anger in
+                                moodTracker.addMoodEntry(happiness: happiness, sadness: sadness, anger: anger)
                             }
                             .transition(.move(edge: .top))
                         }
@@ -79,23 +73,24 @@ struct ContentView: View {
                                 .foregroundStyle(.white)
                         }
                     }
-                    .navigationDestination(for: buttons.self) { destination in
-                        switch destination {
-                        case .reminders:
-                            RemindersView()
-                        case .moodScore:
-                            MoodScoreView()
-                        case .selfCare:
-                            SelfCareView()
-                        case .journal:
-                            JournalView()
-                        }
+                }
+                .navigationDestination(for: buttons.self) { destination in
+                    switch destination {
+                    case .reminders:
+                        RemindersView()
+                    case .moodScore:
+                        MoodScoreView()
+                    case .selfCare:
+                        SelfCareView()
+                    case .journal:
+                        JournalView()
                     }
                 }
             }
         }
         .onAppear {
-            showMoodInput = true
+            showMoodInput = !moodTracker.hasTrackedMoodToday()
+            requestNotificationPermissions()
         }
     }
     
@@ -111,6 +106,17 @@ struct ContentView: View {
         .buttonStyle(.plain)
         .frame(maxWidth: .infinity)
         .frame(height: 95)
+    }
+    
+    func requestNotificationPermissions() {
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
+            if let error = error {
+                print("Error requesting notifications permission: \(error)")
+            } else {
+                print("Notifications permission granted: \(granted)")
+            }
+        }
     }
 }
 

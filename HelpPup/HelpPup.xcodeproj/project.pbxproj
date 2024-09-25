@@ -18,6 +18,7 @@
 		1DBBCDFF2C44E8CF00BCF40C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1DBBCDFE2C44E8CF00BCF40C /* Assets.xcassets */; };
 		1DBBCE022C44E8CF00BCF40C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1DBBCE012C44E8CF00BCF40C /* Preview Assets.xcassets */; };
 		1DBBCE092C44E8FE00BCF40C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBBCE082C44E8FE00BCF40C /* SettingsView.swift */; };
+		1DF372F32C97F30700E288AC /* ReminderSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF372F22C97F30700E288AC /* ReminderSettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		1DBBCDFE2C44E8CF00BCF40C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1DBBCE012C44E8CF00BCF40C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1DBBCE082C44E8FE00BCF40C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		1DF372F22C97F30700E288AC /* ReminderSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderSettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 				1D66B8492C7EFB7A00A964F0 /* JournalView.swift */,
 				1D66B8472C7EFB6B00A964F0 /* SelfCareView.swift */,
 				1D66B8452C7EFB5C00A964F0 /* RemindersView.swift */,
+				1DF372F22C97F30700E288AC /* ReminderSettingsView.swift */,
 				1D66B8432C7EFB5100A964F0 /* MoodScoreView.swift */,
 				1D66B84B2C7EFD2000A964F0 /* MoodTracker.swift */,
 				1D66B84D2C7EFD8200A964F0 /* MoodInputBox.swift */,
@@ -165,6 +168,7 @@
 				1D66B84A2C7EFB7A00A964F0 /* JournalView.swift in Sources */,
 				1DBBCDFD2C44E8CB00BCF40C /* ContentView.swift in Sources */,
 				1DBBCDFB2C44E8CB00BCF40C /* HelpPupApp.swift in Sources */,
+				1DF372F32C97F30700E288AC /* ReminderSettingsView.swift in Sources */,
 				1D66B84E2C7EFD8200A964F0 /* MoodInputBox.swift in Sources */,
 				1D66B84C2C7EFD2000A964F0 /* MoodTracker.swift in Sources */,
 			);

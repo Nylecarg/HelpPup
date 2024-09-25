@@ -8,11 +8,20 @@
 import SwiftUI
 
 struct JournalView: View {
+    @State private var journalText: String = ""
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        TextEditor(text: $journalText)
+            .padding()
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .cornerRadius(30)
+            .shadow(radius: 5)
+            .navigationTitle("Journal")
+            .navigationBarTitleDisplayMode(.inline)
     }
 }
 
 #Preview {
     JournalView()
 }
+

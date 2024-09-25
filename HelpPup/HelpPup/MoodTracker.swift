@@ -10,20 +10,17 @@ import Foundation
 class MoodTracker: ObservableObject {
     static let shared: MoodTracker = .init()
     
-    @Published var moodEntries: [MoodEntry] = [
-        MoodEntry(date: Date(), moodScore: 3),
-        MoodEntry(date: Date().addingTimeInterval(-86400), moodScore: 4),
-        MoodEntry(date: Date().addingTimeInterval(-86400 * 2), moodScore: 2)
-    ]
+    @Published var moodEntries: [MoodEntry] = []
     
     private let key = "MoodEntries"
     
     init() {
         loadMoodEntries()
+        checkAndResetWeeklyData()
     }
     
-    func addMoodEntry(moodScore: Int) {
-        let newEntry = MoodEntry(date: Date(), moodScore: moodScore)
+    func addMoodEntry(happiness: Int, sadness: Int, anger: Int) {
+        let newEntry = MoodEntry(date: Date(), happiness: happiness, sadness: sadness, anger: anger)
         moodEntries.append(newEntry)
         saveMoodEntries()
     }
@@ -41,10 +38,21 @@ class MoodTracker: ObservableObject {
         }
     }
     
-    func weeklyAnalysis() -> String {
-        let totalMood = moodEntries.reduce(0) { $0 + $1.moodScore }
-        let averageMood = Double(totalMood) / Double(moodEntries.count)
-        return "Your average mood this week is \(averageMood)"
+    func hasTrackedMoodToday() -> Bool {
+        guard let lastEntry = moodEntries.last else { return false }
+        let calendar = Calendar.current
+        return calendar.isDateInToday(lastEntry.date)
+    }
+   
+    func checkAndResetWeeklyData() {
+        let calendar = Calendar.current
+        guard let lastEntry = moodEntries.last else { return }
+ 
+        if calendar.component(.weekday, from: Date()) == 1 {
+            if !calendar.isDate(lastEntry.date, equalTo: Date(), toGranularity: .weekOfYear) {
+                resetWeeklyData()
+            }
+        }
     }
     
     func resetWeeklyData() {
@@ -56,6 +64,11 @@ class MoodTracker: ObservableObject {
 struct MoodEntry: Identifiable, Codable {
     var id = UUID()
     let date: Date
-    let moodScore: Int
+    let happiness: Int
+    let sadness: Int
+    let anger: Int
+    
+    var totalMoodScore: Int {
+        return happiness - sadness + anger
+    }
 }
-

@@ -9,28 +9,26 @@ import SwiftUI
 
 struct MoodInputBox: View {
     @Binding var isPresented: Bool
-    @State private var selectedMood: Double = 1.0
-
-    var saveMood: (Int) -> Void
+    @ObservedObject var moodTracker: MoodTracker = .shared
+    @State private var happiness: Double = 5.0
+    @State private var sadness: Double = 5.0
+    @State private var anger: Double = 5.0
+    
+    var saveMood: (Int, Int, Int) -> Void
     
     var body: some View {
         VStack {
-            Text("Current mood")
-                .foregroundStyle(.black)
+            Text("Rate your current emotions")
                 .font(.title2)
                 .bold()
                 .padding(.bottom, 10)
             
-            Text("☹️       😐       🙂       😃")
-                .font(.largeTitle)
-                .padding(.bottom, -15)
-            
-            Slider(value: $selectedMood, in: 1.0...10.0, step: 1.0)
-                .accentColor(.yellow)
-                .padding(5)
+            emotionSliderView(emotion: "Happiness", value: $happiness, emoji: "😊")
+            emotionSliderView(emotion: "Sadness", value: $sadness, emoji: "😢")
+            emotionSliderView(emotion: "Angry", value: $anger, emoji: "😠")
             
             Button(action: {
-                saveMood(Int(selectedMood))
+                saveMood(Int(happiness), Int(sadness), Int(anger))
                 isPresented = false
             }) {
                 Text("Save Mood")
@@ -41,12 +39,18 @@ struct MoodInputBox: View {
             }
         }
         .padding()
-        .background(Color.teal.opacity(0.7))
+        .background(Color.teal.opacity(0.5))
         .cornerRadius(20)
         .shadow(radius: 10)
     }
-}
-
-#Preview {
-    MoodInputBox(isPresented: .constant(true), saveMood: { _ in })
+    
+    func emotionSliderView(emotion: String, value: Binding<Double>, emoji: String) -> some View {
+        VStack {
+            Text("\(emotion) \(emoji)")
+                .font(.headline)
+            Slider(value: value, in: 1.0...10.0, step: 1.0)
+                .accentColor(.yellow)
+                .padding(5)
+        }
+    }
 }

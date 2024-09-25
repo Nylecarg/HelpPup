@@ -9,19 +9,21 @@ import SwiftUI
 struct SettingsView: View {
     var body: some View {
         GeometryReader { geometry in
-            NavigationStack{
-                ZStack{
-                    Image("setbg")
-                        .resizable()
-                        .ignoresSafeArea()
-                        .offset(x: 0.4)
-                    VStack {
-                        Text("Hello, world!")
-                    }
-                    .navigationTitle("Settings")
-                    .navigationBarTitleDisplayMode(.large)
+            ZStack {
+                Image("setbg")
+                    .resizable()
+                    .scaledToFill()
+                    .ignoresSafeArea()
+                    .offset(x: -28)
+                
+                List {
+                    Text("Referral")
+                    Text("Notifications")
+                    Text("Data and privacy")
                 }
+                .scrollContentBackground(.hidden)
             }
+            .navigationTitle("Settings")
         }
     }
 }
